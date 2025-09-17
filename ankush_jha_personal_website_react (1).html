@@ -1,0 +1,265 @@
+import React from "react";
+import { motion } from "framer-motion";
+
+const SkillCard = ({ skill }) => (
+  <motion.div
+    whileHover={{ scale: 1.05 }}
+    transition={{ type: "spring", stiffness: 300 }}
+    className="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center transition-all duration-300 ease-in-out hover:shadow-lg"
+  >
+    <p className="text-sm font-medium text-gray-800">{skill}</p>
+  </motion.div>
+);
+
+const ExperienceCard = ({ exp }) => (
+  <div className="bg-white p-8 rounded-xl shadow-md border border-gray-200 transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-[1.01]">
+    <h3 className="text-2xl font-bold text-teal-600 font-heading">{exp.role}</h3>
+    <p className="text-sm text-gray-600 mt-1">
+      {exp.company} — {exp.location}
+    </p>
+    <p className="text-sm text-gray-500">{exp.dates}</p>
+    <ul className="mt-4 text-sm text-gray-700 list-disc list-inside space-y-2">
+      {exp.bullets.map((b) => (
+        <li key={b}>{b}</li>
+      ))}
+    </ul>
+  </div>
+);
+
+export default function Portfolio() {
+  const resumeLink = "/Ankush_Jha_Resume.pdf";
+  const avatarUrl = "/Gemini_Generated_Image_4zci884zci884zci.png"; // Updated profile image
+
+  const skills = [
+    "Google Ads (Search, Display, Video, Shopping)",
+    "Campaign Strategy & Optimization",
+    "Smart Bidding (Maximize Conversions/Value, Target ROAS)",
+    "GTM, GA4 & Conversion Tracking",
+    "Reporting & Dashboards (Excel, Looker Studio)",
+    "A/B Testing & CRO",
+    "Client Solutions & Stakeholder Management",
+    "Policy Troubleshooting & Account Health",
+  ];
+
+  const experience = [
+    {
+      role: "Digital Marketing Specialist",
+      company: "WNS Global (Google Ads Project)",
+      location: "Gurgaon",
+      dates: "Aug 2024 – Present",
+      bullets: [
+        "Managed 50+ Google Ads accounts across e-commerce, SaaS and services.",
+        "Improved client ROAS by 30%+ through keyword expansion, bidding strategies and ad copy optimization.",
+        "Built reporting frameworks with Google Analytics and Excel to produce actionable insights.",
+      ],
+    },
+    {
+      role: "Associate – Google Ads",
+      company: "Wipro Technologies Ltd",
+      location: "Pune",
+      dates: "Sep 2023 – Jun 2024",
+      bullets: [
+        "Advised advertisers on targeting and bidding strategies to boost ROI.",
+        "Troubleshot technical and policy issues with cross-functional teams.",
+        "Led client education sessions on Google Ads best practices.",
+      ],
+    },
+    {
+      role: "Programmer Analyst Intern & Trainee",
+      company: "Cognizant",
+      location: "Pune",
+      dates: "Jan 2022 – Jun 2023",
+      bullets: [
+        "Streamlined reporting processes and collaborated with stakeholders on compliance tasks.",
+        "Gained analytical and problem-solving skills applicable to campaign strategy.",
+      ],
+    },
+  ];
+
+  const caseStudies = [
+    {
+      title: "Lead Generation — Service Industry (Search Campaigns)",
+      summary:
+        "Objective: Drive inbound calls through search ads. Implemented Maximise Conversions (Target CPA), optimized ad copy, and expanded keyword coverage.",
+      impact: [
+        "135 clicks → 16 conversions → 11.85% conversion rate",
+        "Average CPC: CA$11.70",
+        "Cost per conversion reduced to CA$98.69",
+      ],
+    },
+    {
+      title: "Responsive Search Campaign — Multi-Niche Test",
+      summary:
+        "Objective: Improve conversion efficiency with broad responsive ad testing. Conducted RSA with 80% optimization score, added negative keywords, and shifted budget toward high-performing ad groups.",
+      impact: [
+        "490 clicks → 45 conversions → 9.18% conversion rate",
+        "Average CPC: CA$9.77",
+        "Cost per conversion of CA$106.35 across campaigns",
+      ],
+    },
+    {
+      title: "Seasonal Campaign — Awareness & Assist Program",
+      summary:
+        "Objective: Launch seasonal/assistance-related program with limited budget. Campaign tested with low volume; insights fed into broader campaigns.",
+      impact: [
+        "Low-volume test provided learnings for future optimizations",
+        "Optimization insights redirected to high-performing campaigns",
+      ],
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-white text-gray-800 font-sans leading-relaxed">
+      {/* Sticky Nav */}
+      <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-gray-200">
+        <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          <h1 className="text-2xl font-extrabold text-blue-700">Ankush Jha</h1>
+          <div className="flex gap-6 text-sm font-medium">
+            <a href="#about" className="hover:text-blue-600 transition">About</a>
+            <a href="#skills" className="hover:text-blue-600 transition">Skills</a>
+            <a href="#work" className="hover:text-blue-600 transition">Experience</a>
+            <a href="#projects" className="hover:text-blue-600 transition">Case Studies</a>
+            <a href="#contact" className="hover:text-blue-600 transition">Contact</a>
+          </div>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-12 py-24 px-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex-shrink-0"
+        >
+          <img
+            src={avatarUrl}
+            alt="Ankush Jha"
+            className="w-72 h-auto rounded-2xl object-cover shadow-2xl border-4 border-white"
+          />
+        </motion.div>
+
+        <div>
+          <motion.h1
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-5xl md:text-6xl font-extrabold mb-4 font-heading"
+          >
+            Ankush Jha
+          </motion.h1>
+          <p className="text-lg md:text-xl max-w-2xl animate-fade-in delay-200">
+            Digital Marketing Strategist — Helping businesses grow with high-performing Google Ads campaigns.
+          </p>
+          <div className="mt-8 flex gap-4 justify-center md:justify-start">
+            <a
+              href="#projects"
+              className="px-6 py-3 rounded-full bg-white text-blue-700 font-semibold hover:bg-blue-100 transition transform hover:scale-105 shadow-lg"
+            >
+              View Case Studies
+            </a>
+            <a
+              href={resumeLink}
+              target="_blank"
+              rel="noreferrer"
+              className="px-6 py-3 rounded-full border border-white text-white font-semibold hover:bg-white hover:text-blue-700 transition transform hover:scale-105"
+            >
+              Download Resume
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="max-w-5xl mx-auto px-6 py-24">
+        <h2 className="text-4xl font-bold mb-8 text-center font-heading">About Me</h2>
+        <p className="text-lg text-gray-700 leading-relaxed text-center max-w-3xl mx-auto">
+          I am a Digital Marketing Strategist with hands-on experience managing 50+ Google Ads accounts across
+          e-commerce, SaaS, and services. I specialise in campaign strategy, smart bidding, and creating reporting
+          frameworks that turn data into measurable outcomes. My work focuses on improving ROAS, reducing wasted spend,
+          and scaling campaigns thoughtfully.
+        </p>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="bg-gray-50 py-24">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-4xl font-bold mb-10 text-center font-heading">Skills & Tools</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+            {skills.map((s) => (
+              <SkillCard key={s} skill={s} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="work" className="max-w-5xl mx-auto px-6 py-24">
+        <h2 className="text-4xl font-bold mb-12 text-center font-heading">Professional Experience</h2>
+        <div className="space-y-10">
+          {experience.map((exp) => (
+            <ExperienceCard key={exp.role} exp={exp} />
+          ))}
+        </div>
+      </section>
+
+      {/* Case Studies */}
+      <section id="projects" className="bg-gray-50 py-24">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-4xl font-bold mb-12 text-center font-heading">Selected Case Studies</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {caseStudies.map((c) => (
+              <div key={c.title} className="bg-white rounded-xl shadow-md hover:shadow-xl transition transform hover:scale-[1.01] overflow-hidden">
+                <img
+                  src="https://via.placeholder.com/600x400"
+                  alt="Case Study"
+                  className="w-full h-40 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-teal-600 font-heading">{c.title}</h3>
+                  <p className="text-sm text-gray-600 mt-3">{c.summary}</p>
+                  <ul className="mt-4 text-sm text-gray-700 list-disc list-inside space-y-2">
+                    {c.impact.map((i) => (
+                      <li key={i}>{i}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="max-w-4xl mx-auto px-6 py-24 text-center">
+        <h2 className="text-4xl font-bold mb-6 font-heading">Let’s work together</h2>
+        <p className="text-lg text-gray-700 mb-8">
+          I’m available for freelance projects, contract roles, and full-time opportunities.
+        </p>
+        <div className="flex justify-center gap-6">
+          <a
+            href={`mailto:ankushofficial21120@gmail.com`}
+            className="px-6 py-3 rounded-full border-2 border-blue-600 text-blue-600 font-semibold hover:bg-blue-600 hover:text-white transition transform hover:scale-105"
+          >
+            Email Me
+          </a>
+          <a
+            href={resumeLink}
+            target="_blank"
+            rel="noreferrer"
+            className="px-6 py-3 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition transform hover:scale-105"
+          >
+            Download Resume
+          </a>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-white border-t border-gray-200 py-6">
+        <div className="max-w-6xl mx-auto px-6 text-center text-sm text-gray-600">
+          © {new Date().getFullYear()} Ankush Jha — Digital Marketing Strategist. Built with React & Tailwind.
+        </div>
+      </footer>
+    </div>
+  );
+}
